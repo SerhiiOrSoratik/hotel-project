@@ -19,6 +19,12 @@ router.get("/", async (req: Request, res: Response) => {
   res.json(VisitorController.getVisitors());
 });
 
+router.get("/free", async (req: Request, res: Response) => {
+  console.log('aaa')
+  console.log('aaa')
+  res.json(await VisitorController.getFreeRoom());
+});
+
 router.delete("/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
   res.json(VisitorController.deleteVisitor(+id));

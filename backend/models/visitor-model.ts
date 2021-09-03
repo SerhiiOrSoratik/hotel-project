@@ -18,13 +18,16 @@ export class VisitorModel {
     });
   }
 
-  static async getVisitors() {
-    console.log("aaaaaaa");
-    return await prisma.visitors.findMany();
+  static getVisitors() {
+    return prisma.visitors.findMany();
   }
 
-  static async deleteVisitor(id: number) {
-    return await prisma.visitors.delete({
+  static getFreeRoom() {
+    return prisma.rooms.findMany();
+  }
+
+  static deleteVisitor(id: number) {
+    return prisma.visitors.delete({
       where: {
         id: id,
       },
