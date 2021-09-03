@@ -1,7 +1,8 @@
+import './header.css'
 export const Header = () => {
     return (
-        <div>
-            <h1>Header</h1>
-        </div>
+        <header>
+            <h1>Hotel California ☆ ☆ ☆ ☆ ☆</h1>
+        </header>
     )
 }
