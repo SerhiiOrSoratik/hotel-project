@@ -13,25 +13,41 @@ export const ReservationForm = () => {
     <div>
       <form id="visitor_form" onSubmit={onSubmitHandler}>
         <div className="form-input">
-        <input type="text" name="name" placeholder="name" style={{width: '100%'}}/>
-          <div className='input-container'>
-            <select className='select' name="classRoom">
-              <option value="1">luxury</option>
-              <option value="2">standart</option>
-              <option value="3">econom</option>
+          <input
+            type="text"
+            name="name"
+            placeholder="name"
+            style={{ width: "100%" }}
+          />
+          <div className="input-container">
+            <select className="select" name="classRoom">
+              <option value="luxury">luxury</option>
+              <option value="standart">standart</option>
+              <option value="econom">econom</option>
             </select>
-            <select className='select' name="TypeRoom">
-              <option value="1">SGL</option>
-              <option value="2">DBL</option>
+            <select className="select" name="TypeRoom">
+              <option value="SGL">SGL</option>
+              <option value="DBL">DBL</option>
             </select>
-          </div >
-          <div className='input-container'>
-          <input type="date" name="startDate" placeholder="startDate" className='select-date'/>
-          <input type="date" name="endDate" placeholder="endDate" className='select-date'/>
           </div>
-         
+          <div className="input-container">
+            <input
+              type="date"
+              name="startDate"
+              placeholder="startDate"
+              className="select-date"
+            />
+            <input
+              type="date"
+              name="endDate"
+              placeholder="endDate"
+              className="select-date"
+            />
+          </div>
         </div>
-        <button type="submit" className='reservation-button'>reservate</button>
+        <button type="submit" className="reservation-button">
+          Find room
+        </button>
       </form>
     </div>
   );
