@@ -1,3 +1,9 @@
 .room-content {
-    padding: 40px
+    width: 100%;
+    /* padding: 40px; */
+    display: flex;
+    gap: 5px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+   
 }

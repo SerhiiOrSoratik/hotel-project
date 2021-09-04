@@ -19,8 +19,8 @@ export class VisitorController {
     return VisitorModel.getVisitors();
   }
 
-  static getFreeRoom() {
-    return VisitorModel.getFreeRoom();
+  static getFreeRoom(params : any) {
+    return VisitorModel.getFreeRoom(params);
   }
 
   static deleteVisitor = (id: number) => {

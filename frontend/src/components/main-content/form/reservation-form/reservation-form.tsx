@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { findFreeRooms } from "../../../../action/action";
 import "./reservation-form.css";
 
 export const ReservationForm = () => {
@@ -6,9 +9,11 @@ export const ReservationForm = () => {
     event.preventDefault();
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
-    console.log(data);
+    
+      dispatch(findFreeRooms(data));
   };
 
+  const dispatch = useDispatch();
   return (
     <div>
       <form id="visitor_form" onSubmit={onSubmitHandler}>
@@ -20,12 +25,12 @@ export const ReservationForm = () => {
             style={{ width: "100%" }}
           />
           <div className="input-container">
-            <select className="select" name="classRoom">
+            <select className="select" name="roomClass">
               <option value="luxury">luxury</option>
               <option value="standart">standart</option>
               <option value="econom">econom</option>
             </select>
-            <select className="select" name="TypeRoom">
+            <select className="select" name="roomType">
               <option value="SGL">SGL</option>
               <option value="DBL">DBL</option>
             </select>
