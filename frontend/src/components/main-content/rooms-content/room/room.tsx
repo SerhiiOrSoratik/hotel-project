@@ -1,17 +1,38 @@
+import { useDispatch } from 'react-redux'
 import './room.css'
+import { addNewVisitor } from '../../../../action/action';
 
-const reservateRoom = () => {
-    alert('Okey man, its good room')
+interface newVisitor {
+    roomId: number
+    name: string,
+    startDate: string | Date,
+    endDate: string | Date
 }
 
-export const Room = ({freeRooms} : any) => {
-    if (freeRooms !== undefined) {
-        return freeRooms.map((fr: any) => {
+interface FreeRooms {
+    id: number,
+    type: string,
+    class: string,
+    visitors: []
+}
+
+const reservateRoom = (newVisitor: newVisitor, id: number, dispatch: any) => {
+    newVisitor.roomId = id;
+    newVisitor.startDate = new Date(newVisitor.startDate)
+    newVisitor.endDate = new Date(newVisitor.endDate)
+    dispatch(addNewVisitor(newVisitor));
+    alert('Ok. You reservate rooms. Wait call')
+}
+
+export const Room = ({state} : any) => {
+    const dispatch = useDispatch()
+    if (state.freeRooms !== undefined) {
+        return state.freeRooms.map((fr: FreeRooms) => {
             return (
             <div className='room' key={`room${fr.id}`}>
                 <h3>Room {fr.id}</h3>
                 <p>{fr.class} {fr.type} room</p>
-                <button onClick={() => reservateRoom()}>Reservate</button>
+                <button onClick={() => reservateRoom(state.newVisitor, fr.id, dispatch)}>Reservate</button>
             </div>
             )
         })

@@ -5,10 +5,10 @@ import { useSelector } from 'react-redux'
 
 export const RoomsContent = () => {
 
-    const freeRooms = useSelector(state => state)
+    const state = useSelector(state => state)
     return (
         <div className="room-content">
-            <Room freeRooms={freeRooms}/>
+            <Room state={state}/>
         </div>
     )
 }

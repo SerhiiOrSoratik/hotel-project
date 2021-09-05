@@ -5,11 +5,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createStore } from 'redux';
 import ReduxThunk from "redux-thunk";
-import { reducer } from './reducers/reducer';
+import allReducers from './reducers';
 import { applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
-export const store = createStore(reducer, applyMiddleware(ReduxThunk));
+export const store = createStore(allReducers, applyMiddleware(ReduxThunk));
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

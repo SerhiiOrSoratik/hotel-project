@@ -15,15 +15,7 @@ export class VisitorController {
     );
   }
 
-  static getVisitors() {
-    return VisitorModel.getVisitors();
-  }
-
   static getFreeRoom(params : any) {
     return VisitorModel.getFreeRoom(params);
   }
-
-  static deleteVisitor = (id: number) => {
-    return VisitorModel.deleteVisitor(id);
-  };
 }

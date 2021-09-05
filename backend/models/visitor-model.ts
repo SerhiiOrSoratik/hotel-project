@@ -18,10 +18,6 @@ export class VisitorModel {
     });
   }
 
-  static getVisitors() {
-    return prisma.visitors.findMany();
-  }
-
   static async getFreeRoom(params: any) {
     const rooms = await prisma.rooms.findMany({
       select: {
@@ -72,13 +68,5 @@ export class VisitorModel {
      fr.visitors.length < 1
     )
     return freeRooms
-  }
-
-  static deleteVisitor(id: number) {
-    return prisma.visitors.delete({
-      where: {
-        id: id,
-      },
-    });
   }
 }

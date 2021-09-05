@@ -4,20 +4,15 @@ import { VisitorController } from "../controllers/visitor-contorller";
 export const router = Router();
 
 router.post("/", async (req: Request, res: Response) => {
-  const { name, roomId, reservationStartDate, reservationEndDate } = req.body;
+  const { name, roomId, startDate, endDate } = req.body;
   res.json(
     VisitorController.addVisitor(
       name,
       roomId,
-      reservationStartDate,
-      reservationEndDate
+      startDate,
+      endDate
     )
   );
-});
-
-router.get("/", async (req: Request, res: Response) => {
-  
-  res.json(VisitorController.getVisitors());
 });
 
 router.get("/free", async (req: Request, res: Response) => {
@@ -25,7 +20,3 @@ router.get("/free", async (req: Request, res: Response) => {
   res.json(await VisitorController.getFreeRoom(params));
 });
 
-router.delete("/:id", async (req: Request, res: Response) => {
-  const { id } = req.params;
-  res.json(VisitorController.deleteVisitor(+id));
-});

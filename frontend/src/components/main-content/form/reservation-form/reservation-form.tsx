@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { findFreeRooms } from "../../../../action/action";
 import "./reservation-form.css";
@@ -9,8 +8,7 @@ export const ReservationForm = () => {
     event.preventDefault();
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
-    
-      dispatch(findFreeRooms(data));
+    dispatch(findFreeRooms(data));
   };
 
   const dispatch = useDispatch();
