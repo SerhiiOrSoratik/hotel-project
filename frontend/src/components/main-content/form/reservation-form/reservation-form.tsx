@@ -8,10 +8,12 @@ export const ReservationForm = () => {
     event.preventDefault();
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
+    if(data.name && data.roomClass && data.roomType && data.startDate && data.endDate)
     dispatch(findFreeRooms(data));
   };
 
   const dispatch = useDispatch();
+  const minDate = new Date().toISOString().split('T')[0];
   return (
     <div>
       <form id="visitor_form" onSubmit={onSubmitHandler}>
@@ -39,12 +41,14 @@ export const ReservationForm = () => {
               name="startDate"
               placeholder="startDate"
               className="select-date"
+              min={minDate}
             />
             <input
               type="date"
               name="endDate"
               placeholder="endDate"
               className="select-date"
+              min={minDate}
             />
           </div>
         </div>

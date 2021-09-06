@@ -1,10 +1,10 @@
-import { ReservationForm } from "./reservation-form/reservation-form"
+import { ReservationForm } from "./reservation-form/reservation-form";
 
-import './form.css'
+import "./form.css";
 export const Form = () => {
-    return (
-        <div className="form">
-            <ReservationForm />
-        </div>
-    )
-}
+  return (
+    <div className="form">
+      <ReservationForm />
+    </div>
+  );
+};

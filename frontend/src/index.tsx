@@ -8,8 +8,16 @@ import ReduxThunk from "redux-thunk";
 import allReducers from './reducers';
 import { applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import { compose } from 'redux';
 
-export const store = createStore(allReducers, applyMiddleware(ReduxThunk));
+declare global {
+	interface Window {
+		__REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+	}
+}
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+export const store = createStore(allReducers, compose(applyMiddleware(ReduxThunk), composeEnhancers()));
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

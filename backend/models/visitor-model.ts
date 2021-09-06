@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import { FreeRooms } from "../interfaces/interfaces";
 
 const prisma = new PrismaClient();
 export class VisitorModel {
@@ -18,7 +19,7 @@ export class VisitorModel {
     });
   }
 
-  static async getFreeRoom(params: any) {
+  static async getFreeRoom(params: FreeRooms) {
     const rooms = await prisma.rooms.findMany({
       select: {
         id: true,
@@ -31,42 +32,40 @@ export class VisitorModel {
                 OR: [
                   {
                     reservation_end_date: {
-                      gte: new Date(params.reservation_start_date)
+                      gte: new Date(params.reservation_start_date),
                     },
                   },
                   {
                     reservation_end_date: {
-                      gte: new Date(params.reservation_end_date)
+                      gte: new Date(params.reservation_end_date),
                     },
-                  }
-                ]
+                  },
+                ],
               },
               {
                 OR: [
                   {
                     reservation_start_date: {
-                      lte: new Date(params.reservation_start_date)
+                      lte: new Date(params.reservation_start_date),
                     },
                   },
                   {
                     reservation_start_date: {
-                      lte: new Date(params.reservation_end_date)
+                      lte: new Date(params.reservation_end_date),
                     },
-                  }
-                ]
-              }
-            ]
-          }
-      }
-    },
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
       where: {
         type: params.type,
         class: params.class,
-      }
+      },
     });
-    const freeRooms = rooms.filter(fr => 
-     fr.visitors.length < 1
-    )
-    return freeRooms
+    const freeRooms = rooms.filter((fr) => fr.visitors.length < 1);
+    return freeRooms;
   }
 }
